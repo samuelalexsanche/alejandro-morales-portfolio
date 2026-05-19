@@ -6,7 +6,7 @@
   <meta name="description" content="Alejandro Morales — Fotógrafo y Director de Video en Ciudad de México. Fotografía editorial, comercial, retratos y producción audiovisual de alto impacto." />
   <meta property="og:title" content="Alejandro Morales — Fotografía & Video" />
   <meta property="og:description" content="Capturando momentos que trascienden el tiempo. Fotografía editorial y producción audiovisual de alto impacto." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1200&q=80" />
+  <meta property="og:image" content="images/img-09.jpeg" />
   <meta property="og:type" content="website" />
   <title>Alejandro Morales — Fotografía & Video</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -426,6 +426,101 @@
       font-size: 10px;
       color: rgba(255,255,255,0.6);
       letter-spacing: 0.1em;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       FEATURED STRIP
+    ═══════════════════════════════════════════════════════════════════════ */
+    #featured {
+      padding: var(--space-2xl) 0 0;
+      overflow: hidden;
+    }
+    .featured-header {
+      padding: 0 var(--pad-x);
+      max-width: var(--max-w);
+      margin: 0 auto var(--space-lg);
+    }
+    .featured-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 300;
+      line-height: 1.05;
+      margin-top: var(--space-sm);
+    }
+    .featured-strip {
+      display: flex;
+      gap: 3px;
+      height: 72vh;
+      min-height: 480px;
+      cursor: none;
+      user-select: none;
+    }
+    .featured-strip.grabbing { cursor: none; }
+    .featured-slide {
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+      transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      flex: 1;
+    }
+    .featured-slide:first-child { flex: 2.2; }
+    .featured-slide:hover { flex: 2.8; }
+    .featured-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      transition: transform 0.6s ease;
+    }
+    .featured-slide:hover img { transform: scale(1.03); }
+    .featured-slide-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: var(--space-md);
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .featured-slide:hover .featured-slide-caption { opacity: 1; }
+    .featured-slide-caption span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 300;
+      color: white;
+      font-style: italic;
+    }
+    .featured-drag-hint {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: var(--space-sm) var(--pad-x);
+      max-width: var(--max-w);
+      margin: var(--space-sm) auto 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-ink-ghost);
+    }
+    .featured-drag-hint::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--color-border);
+    }
+    @media (max-width: 768px) {
+      .featured-strip {
+        height: 55vw;
+        min-height: 260px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .featured-slide {
+        flex: 0 0 75vw !important;
+        scroll-snap-align: start;
+      }
+      .featured-slide:hover { flex: 0 0 75vw !important; }
     }
 
     /* ═══════════════════════════════════════════════════════════════════════
@@ -1004,13 +1099,49 @@
     </div>
     <div class="hero-image">
       <img
-        src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=900&q=80&fit=crop"
-        alt="Retrato fotográfico — Alejandro Morales"
+        src="images/img-09.jpeg"
+        alt="Pareja en avenida arbolada — Alejandro Morales"
         fetchpriority="high"
+        style="object-position: center center;"
       />
       <div class="hero-image-overlay"></div>
       <span class="hero-image-caption">© Alejandro Morales</span>
     </div>
+  </section>
+
+  <!-- ── FEATURED ─────────────────────────────────────────────────────────── -->
+  <section id="featured">
+    <div class="featured-header">
+      <div class="section-label reveal">Sesión destacada</div>
+      <h2 class="featured-title reveal" style="transition-delay:0.1s">Vintage Romance<br><em style="color:var(--color-gold)">64' T-Bird</em></h2>
+    </div>
+    <div class="featured-strip" id="featuredStrip">
+      <div class="featured-slide">
+        <img src="images/img-05.jpeg" alt="Pareja frente al T-Bird" />
+        <div class="featured-slide-caption"><span>Frente al Thunderbird</span></div>
+      </div>
+      <div class="featured-slide">
+        <img src="images/img-02.jpeg" alt="Bailando en arcadas coloniales" />
+        <div class="featured-slide-caption"><span>Arcadas coloniales</span></div>
+      </div>
+      <div class="featured-slide">
+        <img src="images/img-11.jpeg" alt="Novia en el auto clásico" style="object-position: center top;" />
+        <div class="featured-slide-caption"><span>La novia</span></div>
+      </div>
+      <div class="featured-slide">
+        <img src="images/img-07.jpeg" alt="Pareja en edificio colonial" />
+        <div class="featured-slide-caption"><span>Hacienda colonial</span></div>
+      </div>
+      <div class="featured-slide">
+        <img src="images/img-17.jpeg" alt="Beso junto al auto" />
+        <div class="featured-slide-caption"><span>Un momento</span></div>
+      </div>
+      <div class="featured-slide">
+        <img src="images/img-18.jpeg" alt="Interior del T-Bird" />
+        <div class="featured-slide-caption"><span>El conductor</span></div>
+      </div>
+    </div>
+    <p class="featured-drag-hint">Pasa el cursor para explorar</p>
   </section>
 
   <!-- ── PORTFOLIO ─────────────────────────────────────────────────────────── -->
@@ -1021,117 +1152,129 @@
         <h2 class="portfolio-title reveal" style="transition-delay:0.1s">Un ojo para cada historia</h2>
         <div class="portfolio-filters reveal" style="transition-delay:0.2s">
           <button class="filter-btn active" data-filter="all">Todos</button>
-          <button class="filter-btn" data-filter="fotografía">Fotografía</button>
-          <button class="filter-btn" data-filter="video">Video</button>
-          <button class="filter-btn" data-filter="comercial">Comercial</button>
+          <button class="filter-btn" data-filter="pareja">Pareja</button>
+          <button class="filter-btn" data-filter="retrato">Retratos</button>
+          <button class="filter-btn" data-filter="detalle">Detalles</button>
         </div>
       </div>
       <div class="portfolio-grid">
-        <div class="grid-item reveal" data-cat="fotografía">
-          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=75&fit=crop" alt="Paisaje montaña" loading="lazy" />
+        <!-- 1: B&W couple in arches — span 2 -->
+        <div class="grid-item reveal" data-cat="pareja">
+          <img src="images/img-02.jpeg" alt="Pareja bailando en arcadas" loading="lazy" />
           <div class="grid-item-overlay">
             <div class="grid-item-info">
-              <div class="grid-item-title">Entre nubes y piedra</div>
-              <div class="grid-item-cat">Fotografía</div>
+              <div class="grid-item-title">Entre arcos y sombra</div>
+              <div class="grid-item-cat">Pareja</div>
             </div>
           </div>
         </div>
-        <div class="grid-item reveal" data-cat="fotografía" style="transition-delay:0.05s">
-          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=75&fit=crop" alt="Retrato" loading="lazy" />
+        <!-- 2: B&W bride heart sunglasses -->
+        <div class="grid-item reveal" data-cat="retrato" style="transition-delay:0.05s">
+          <img src="images/img-03.jpeg" alt="Novia con lentes de corazón" loading="lazy" />
           <div class="grid-item-overlay">
             <div class="grid-item-info">
-              <div class="grid-item-title">Mirada interior</div>
-              <div class="grid-item-cat">Fotografía</div>
+              <div class="grid-item-title">Corazón en los ojos</div>
+              <div class="grid-item-cat">Retrato</div>
             </div>
           </div>
         </div>
-        <div class="grid-item reveal" data-cat="comercial" style="transition-delay:0.1s">
-          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=75&fit=crop" alt="Fotografía comercial" loading="lazy" />
+        <!-- 3: Couple colonial building -->
+        <div class="grid-item reveal" data-cat="pareja" style="transition-delay:0.1s">
+          <img src="images/img-07.jpeg" alt="Pareja en edificio colonial" loading="lazy" />
           <div class="grid-item-overlay">
             <div class="grid-item-info">
-              <div class="grid-item-title">Brand Identity</div>
-              <div class="grid-item-cat">Comercial</div>
+              <div class="grid-item-title">Arquitectura y amor</div>
+              <div class="grid-item-cat">Pareja</div>
             </div>
           </div>
         </div>
-        <div class="grid-item reveal" data-cat="fotografía" style="transition-delay:0.15s">
-          <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=75&fit=crop" alt="Retrato editorial" loading="lazy" />
+        <!-- 4: Couple smiling front T-Bird — span 2 -->
+        <div class="grid-item reveal" data-cat="pareja" style="transition-delay:0.05s">
+          <img src="images/img-05.jpeg" alt="Pareja feliz frente al T-Bird" loading="lazy" />
           <div class="grid-item-overlay">
             <div class="grid-item-info">
-              <div class="grid-item-title">Editorial Noche</div>
-              <div class="grid-item-cat">Fotografía</div>
+              <div class="grid-item-title">Juntos en la carretera</div>
+              <div class="grid-item-cat">Pareja</div>
             </div>
           </div>
         </div>
-        <div class="grid-item reveal" data-cat="video" style="transition-delay:0.2s">
-          <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=75&fit=crop" alt="Video producción" loading="lazy" />
+        <!-- 5: Ring on black background -->
+        <div class="grid-item reveal" data-cat="detalle" style="transition-delay:0.1s">
+          <img src="images/img-12.jpeg" alt="Detalle del anillo" loading="lazy" style="object-position: center 20%;" />
           <div class="grid-item-overlay">
             <div class="grid-item-info">
-              <div class="grid-item-title">Frame Perfecto</div>
-              <div class="grid-item-cat">Video</div>
+              <div class="grid-item-title">El detalle eterno</div>
+              <div class="grid-item-cat">Detalle</div>
             </div>
           </div>
         </div>
-        <div class="grid-item reveal" data-cat="fotografía" style="transition-delay:0.25s">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=75&fit=crop" alt="Retrato masculino" loading="lazy" />
+        <!-- 6: B&W portrait bride through car window -->
+        <div class="grid-item reveal" data-cat="retrato" style="transition-delay:0.15s">
+          <img src="images/img-14.jpeg" alt="Retrato novia en ventana" loading="lazy" />
           <div class="grid-item-overlay">
             <div class="grid-item-info">
-              <div class="grid-item-title">Serenidad urbana</div>
-              <div class="grid-item-cat">Fotografía</div>
+              <div class="grid-item-title">Luz de ventanilla</div>
+              <div class="grid-item-cat">Retrato</div>
             </div>
           </div>
         </div>
-        <div class="grid-item reveal" data-cat="fotografía" style="transition-delay:0.1s">
-          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=75&fit=crop" alt="Paisaje naturaleza" loading="lazy" />
+        <!-- 7: Couple celebrating -->
+        <div class="grid-item reveal" data-cat="pareja" style="transition-delay:0.1s">
+          <img src="images/img-08.jpeg" alt="Pareja celebrando" loading="lazy" />
           <div class="grid-item-overlay">
             <div class="grid-item-info">
-              <div class="grid-item-title">Luz dorada</div>
-              <div class="grid-item-cat">Fotografía</div>
+              <div class="grid-item-title">Pura alegría</div>
+              <div class="grid-item-cat">Pareja</div>
             </div>
           </div>
         </div>
-        <div class="grid-item reveal" data-cat="fotografía" style="transition-delay:0.15s">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=75&fit=crop" alt="Bodas" loading="lazy" />
+        <!-- 8: Cinematic avenue — span 2 -->
+        <div class="grid-item reveal" data-cat="pareja" style="transition-delay:0.05s">
+          <img src="images/img-09.jpeg" alt="Pareja en avenida arbolada" loading="lazy" />
           <div class="grid-item-overlay">
             <div class="grid-item-info">
-              <div class="grid-item-title">Promesas eternas</div>
-              <div class="grid-item-cat">Fotografía</div>
+              <div class="grid-item-title">El camino juntos</div>
+              <div class="grid-item-cat">Pareja</div>
             </div>
           </div>
         </div>
-        <div class="grid-item reveal" data-cat="video" style="transition-delay:0.2s">
-          <img src="https://images.unsplash.com/photo-1536240478700-b869ad10e2e0?w=800&q=75&fit=crop" alt="Set de producción" loading="lazy" />
+        <!-- 9: Color bride in car -->
+        <div class="grid-item reveal" data-cat="retrato" style="transition-delay:0.1s">
+          <img src="images/img-11.jpeg" alt="Novia en el auto clásico" loading="lazy" />
           <div class="grid-item-overlay">
             <div class="grid-item-info">
-              <div class="grid-item-title">Detrás del lente</div>
-              <div class="grid-item-cat">Video</div>
+              <div class="grid-item-title">Bride</div>
+              <div class="grid-item-cat">Retrato</div>
             </div>
           </div>
         </div>
-        <div class="grid-item reveal" data-cat="comercial" style="transition-delay:0.1s">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=75&fit=crop" alt="Fotografía de moda" loading="lazy" />
+        <!-- 10: T-Bird interior steering wheel -->
+        <div class="grid-item reveal" data-cat="detalle" style="transition-delay:0.1s">
+          <img src="images/img-16.jpeg" alt="Interior del T-Bird" loading="lazy" />
           <div class="grid-item-overlay">
             <div class="grid-item-info">
-              <div class="grid-item-title">Alta costura</div>
-              <div class="grid-item-cat">Comercial</div>
+              <div class="grid-item-title">64' T-Bird</div>
+              <div class="grid-item-cat">Detalle</div>
             </div>
           </div>
         </div>
-        <div class="grid-item reveal" data-cat="comercial" style="transition-delay:0.15s">
-          <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=75&fit=crop" alt="Arquitectura" loading="lazy" />
+        <!-- 11: Ring close-up -->
+        <div class="grid-item reveal" data-cat="detalle" style="transition-delay:0.15s">
+          <img src="images/img-15.jpeg" alt="Primer plano del anillo" loading="lazy" />
           <div class="grid-item-overlay">
             <div class="grid-item-info">
-              <div class="grid-item-title">Geometría viva</div>
-              <div class="grid-item-cat">Comercial</div>
+              <div class="grid-item-title">Para siempre</div>
+              <div class="grid-item-cat">Detalle</div>
             </div>
           </div>
         </div>
-        <div class="grid-item reveal" data-cat="fotografía" style="transition-delay:0.2s">
-          <img src="https://images.unsplash.com/photo-1574169208507-84376144848b?w=800&q=75&fit=crop" alt="Arte abstracto" loading="lazy" />
+        <!-- 12: Couple kissing through car window -->
+        <div class="grid-item reveal" data-cat="pareja" style="transition-delay:0.2s">
+          <img src="images/img-17.jpeg" alt="Beso a través del auto" loading="lazy" />
           <div class="grid-item-overlay">
             <div class="grid-item-info">
-              <div class="grid-item-title">Abstracción pura</div>
-              <div class="grid-item-cat">Fotografía</div>
+              <div class="grid-item-title">Un beso en el camino</div>
+              <div class="grid-item-cat">Pareja</div>
             </div>
           </div>
         </div>
@@ -1178,8 +1321,8 @@
         <div class="about-image-wrap reveal">
           <div class="about-image-frame">
             <img
-              src="https://images.unsplash.com/photo-1504703395950-b89145a5425b?w=700&q=80&fit=crop"
-              alt="Alejandro Morales — Fotógrafo"
+              src="images/img-04.jpeg"
+              alt="Pareja frente al T-Bird — sesión editorial"
               loading="lazy"
             />
           </div>
@@ -1419,6 +1562,9 @@
         });
       });
     });
+
+    /* ── FEATURED STRIP — reveal on scroll ────────────────────────────────── */
+    document.querySelectorAll('.featured-slide').forEach(el => revealObserver.observe(el));
 
     /* ── CONTACT FORM ──────────────────────────────────────────────────────── */
     const form = document.getElementById('contact-form');
